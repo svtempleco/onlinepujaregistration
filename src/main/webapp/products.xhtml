@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Sri Venkateswara Swamy Temple Of Colorado-Temple Services</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <p:panel>
+                <div class="ui-fluid">
+                    <p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid" style="font-size: 12px;">
+                        <p:dataTable id="products"
+                                     var="product"
+                                     rowKey="#{product.productId}"
+                                     selection="#{productBean.selectedProduct}"
+                                     selectionMode="single"
+                                     value="#{productBean.products}"
+                                     reflow="true"
+                                     rows="10"
+                                     paginator="true"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     filteredValue="#{productBean.filteredProducts}"
+                                     rowsPerPageTemplate="25,100,500">
+
+                            <f:facet name="header">
+                                List of all Temple Services at Home or Temple. Right Click to View Options
+                            </f:facet>
+
+                            <p:column headerText="Name" filterBy="#{product.name}" filterMatchMode="contains" sortBy="#{product.name}" priority="1">
+                                <h:outputText value="#{product.name}" />
+                            </p:column>
+
+                            <p:column headerText="Location" filterBy="#{product.location}" filterMatchMode="contains" sortBy="#{product.location}" priority="2">
+                                <h:outputText value="#{product.location}" />
+                            </p:column>
+
+                            <p:column headerText="Schedule" filterBy="#{product.schedule}" filterMatchMode="contains" sortBy="#{product.schedule}" priority="3">
+                                <h:outputText value="#{product.schedule}" />
+                            </p:column>
+
+                            <p:column headerText="Price" filterBy="#{product.price}" filterMatchMode="contains" sortBy="#{product.price}" priority="4">
+                                <h:outputText value="#{product.price}" >
+                                    <f:convertNumber currencySymbol="$" type="currency"/>
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column headerText="Description" filterBy="#{product.description}" filterMatchMode="contains" sortBy="#{product.description}" priority="5">
+                                <h:outputText value="#{product.description}" />
+                            </p:column>
+
+                            <!--
+                            <p:column headerText="Created Date" filterBy="#{product.createdDate}" filterMatchMode="contains" sortBy="#{product.createdDate}" priority="7">
+                                <h:outputText value="#{product.createdDate}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column headerText="Created User" filterBy="#{product.createdUser}" filterMatchMode="contains" sortBy="#{product.createdUser}" priority="8">
+                                <h:outputText value="#{product.createdUser}" />
+                            </p:column>
+
+                            <p:column headerText="Updated Date" filterBy="#{product.updatedDate}" filterMatchMode="contains" sortBy="#{product.updatedDate}" priority="9">
+                                <h:outputText value="#{product.updatedDate}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column headerText="Updated User" filterBy="#{product.updatedUser}" filterMatchMode="contains" sortBy="#{product.updatedUser}" priority="10">
+                                <h:outputText value="#{product.updatedUser}" />
+                            </p:column>
+                            -->
+                        </p:dataTable>
+                    </p:panelGrid>
+
+                    <p:contextMenu for="products">
+                        <p:menuitem value="View" update="productDetail" icon="ui-icon-search" oncomplete="PF('productDialog').show()"/>
+                        <p:menuitem value="Edit" update="productDetail" icon="ui-icon-search" oncomplete="PF('productDialog').show()"/>
+                        <p:menuitem value="Delete" update="products" icon="ui-icon-close" actionListener="#{productBean.deleteProduct}"/>
+                    </p:contextMenu>
+
+                    <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                        <p:outputPanel id="productDetail">
+                            <p:panelGrid  columns="2" rendered="#{not empty productBean.selectedProduct}" columnClasses="label,value">
+
+                                <h:outputText value="Name" />
+                                <h:inputText value="#{productBean.selectedProduct.name}" />
+
+                                <h:outputText value="Location:" />
+                                <h:inputText value="#{productBean.selectedProduct.location}"/>
+
+                                <h:outputText value="Schedule:" />
+                                <h:inputText value="#{productBean.selectedProduct.schedule}"/>
+
+                                <h:outputText value="Description:" />
+                                <h:inputText value="#{productBean.selectedProduct.description}"/>
+
+                                <h:outputText value="Price" />
+                                <h:inputText value="$#{productBean.selectedProduct.price}" />
+
+                                <p:commandButton value="Save" action="#{productBean.updateProduct}" icon="fa-save"/>
+                                <p:commandButton value="Cancel" action="#{productBean.cancel}" icon="fa fa-fw fa-remove"/>
+
+                            </p:panelGrid>
+                        </p:outputPanel>
+                    </p:dialog>
+
+                    <p:panelGrid columns="2" columnClasses="ui-grid-col-12" layout="grid" style="font-size: 12px;">
+                        <p:commandButton action="#{productBean.addNewService()}" value="Add New Service" />
+                        <p:commandButton action="#{userBean.logout()}" value="Logout" />
+                    </p:panelGrid>
+                </div>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>

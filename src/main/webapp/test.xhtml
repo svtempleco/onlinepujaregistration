@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Sri Venkateswara Swamy Temple Of Colorado</title>
+</h:head>
+
+<h:body style="font-size: 11px;">
+    <h:form id="serviceRegistrationForm">
+        <p:messages autoUpdate="true"/>
+        <p:panel header="Sign up for a Temple Service. (* = Required)">
+
+            <h:panelGrid columns="2" cellpadding="2" style="font-size: 11px;">
+                <p:commandButton value="Save" actionListener="#{userBean.register}" icon="fa-save"/>
+                <p:commandButton value="Cancel" actionListener="#{userBean.cancel}" icon="fa fa-fw fa-remove"/>
+            </h:panelGrid>
+
+        </p:panel>
+
+    </h:form>
+</h:body>
+</html>

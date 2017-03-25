@@ -1,0 +1,147 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Sri Venkateswara Swamy Temple Of Colorado</title>
+</h:head>
+
+<h:body style="font-size: 11px;">
+    <h:form id="serviceRegistrationForm">
+        <p:messages autoUpdate="true"/>
+        <p:panel header="Sign up for a Temple Service">
+            <div class="ui-g">
+                <div class="ui-g-4">
+                    <p:panel header="Your Details">
+                        <h:panelGrid columns="3" cellpadding="2" style="font-size: 11px;">
+                            <p:outputLabel value="First Name"/>
+                            <p:outputLabel value="#{userBean.user.firstName}"/>
+
+                            <p:outputLabel value="Last Name"/>
+                            <p:outputLabel value="#{userBean.user.lastName}"/>
+
+                            <p:outputLabel value="EMail"/>
+                            <p:outputLabel value="#{userBean.user.email}"/>
+
+                            <p:outputLabel value="Phone Number"/>
+                            <p:outputLabel value="#{userBean.user.phoneNumber}"/>
+
+                            <p:outputLabel value="Street Address"/>
+                            <p:outputLabel value="#{userBean.user.streetAddress}"/>
+
+                            <p:outputLabel value="City"/>
+                            <p:outputLabel value="#{userBean.user.city}"/>
+
+                            <p:outputLabel value="State"/>
+                            <p:outputLabel value="#{userBean.user.state}"/>
+
+                            <p:outputLabel value="Zip"/>
+                            <p:outputLabel value="#{userBean.user.zip}"/>
+
+                            <p:outputLabel value="Family Gothram"/>
+                            <p:outputLabel value="#{userBean.user.familyGothram}"/>
+
+                            <p:outputLabel value="Nakshathram"/>
+                            <p:outputLabel value="#{userBean.user.primaryNakshathram}"/>
+
+                            <p:outputLabel value="Padam"/>
+                            <p:outputLabel value="#{userBean.user.primaryPadam}"/>
+
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+                <div class="ui-g-4">
+                    <p:panel header="Spouse Details">
+                        <h:panelGrid columns="3" cellpadding="2" style="font-size: 11px;">
+                            <p:outputLabel value="Spouse Full Name"/>
+                            <p:outputLabel id="spouseName" value="#{userBean.user.spouseName}"/>
+
+                            <p:outputLabel value="Spouse Nakshathram"/>
+                            <p:outputLabel value="#{userBean.user.spouseNakshathram}"/>
+
+                            <p:outputLabel value="Padam"/>
+                            <p:outputLabel value="#{userBean.user.spousePadam}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                    <br></br>
+                    <p:panel header="1st Child details">
+                        <h:panelGrid columns="3" cellpadding="2" style="font-size: 11px;">
+                            <p:outputLabel value="Name"/>
+                            <p:outputLabel value="#{userBean.user.child1Name}"/>
+
+                            <p:outputLabel value="Nakshathram"/>
+                            <p:outputLabel value="#{userBean.user.child1Nakshathram}"/>
+
+                            <p:outputLabel value="Padam"/>
+                            <p:outputLabel value="#{userBean.user.child1Padam}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+                <div class="ui-g-4">
+                    <p:panel header="2nd Child details">
+                        <h:panelGrid columns="3" cellpadding="2" style="font-size: 11px;">
+                            <p:outputLabel value="Name"/>
+                            <p:outputLabel value="#{userBean.user.child2Name}"/>
+
+                            <p:outputLabel value="Nakshathram"/>
+                            <p:outputLabel value="#{userBean.user.child2Nakshathram}"/>
+
+                            <p:outputLabel value="Padam"/>
+                            <p:outputLabel value="#{userBean.user.child2Padam}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                    <br></br>
+                    <p:panel header="3rd Child details">
+                        <h:panelGrid columns="3" cellpadding="2" style="font-size: 11px;">
+                            <p:outputLabel value="Name"/>
+                            <p:outputLabel id="child3Name" value="#{userBean.user.child3Name}"/>
+
+                            <p:outputLabel value="Nakshathram"/>
+                            <p:outputLabel value="#{userBean.user.child3Nakshathram}"/>
+
+                            <p:outputLabel value="Padam"/>
+                            <p:outputLabel value="#{userBean.user.child3Padam}"/>
+
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+            </div>
+
+            <div class="ui-g">
+
+                <div class="ui-g-7">
+                    <p:panel header="Seleceted Services" style="height:200px">
+                        <p:outputLabel value="#{userBean.userProduct.product.name}"/>
+                    </p:panel>
+                </div>
+
+                <div class="ui-g-2">
+                    <p:panel header="Date and Time" style="height:200px">
+                        <p:outputLabel value="#{userBean.userProduct.dateAndTime}"/>
+                    </p:panel>
+                </div>
+
+                <div class="ui-g-3">
+                    <p:panel header="Additional Notes" style="height:200px">
+                        <p:outputLabel value="#{userBean.userProduct.notes}"/>
+                    </p:panel>
+                </div>
+
+            </div>
+
+            <h:panelGrid columns="2" cellpadding="2" style="font-size: 11px;">
+                <p:commandButton value="Pay" actionListener="https://www.paypal.com/donate/?token=B5lmNSJjHFHWw0ysnY2v8_hhxhjPZm4WbxYfXkwNvt7QVubPG5wgmNWU-xfMOaVCUGbqWm" icon="fa-save"/>
+                <p:commandButton value="Cancel" actionListener="#{userBean.cancel}" icon="fa fa-fw fa-remove"/>
+            </h:panelGrid>
+
+
+
+
+        </p:panel>
+
+
+
+    </h:form>
+</h:body>
+</html>
